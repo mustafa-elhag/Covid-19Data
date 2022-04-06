@@ -56,4 +56,24 @@ public class DataHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    public boolean saveData(Data data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_CITY_CODE, data.getCityCode());
+        values.put(KEY_STATUS, data.getStatus());
+        values.put(KEY_COUNTRY, data.getCountry());
+        values.put(KEY_LON, data.getLon());
+        values.put(KEY_CITY, data.getCity());
+        values.put(KEY_COUNTRY_CODE, data.getCountryCode());
+        values.put(KEY_PROVINCE, data.getProvince());
+        values.put(KEY_LAT, data.getLat());
+        values.put(KEY_CASES, data.getCases());
+        values.put(KEY_DATE, data.getDate());
+        long result = db.insert(TABLE_DATA, null, values);
+        Log.d("theS", "saveData: "+result +" "+values);
+        db.close();
+        return result != -1;
+    }
+
 }
