@@ -75,5 +75,48 @@ public class DataHelper extends SQLiteOpenHelper {
         db.close();
         return result != -1;
     }
+    public List<Data> getAllData() {
+        List<Data> dataList = new ArrayList<Data>();
+        String selectQuery = "SELECT  * FROM " + TABLE_DATA;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Data data = new Data();
+                data.setDate(cursor.getString(0));
+                data.setCityCode(cursor.getString(1));
+                data.setStatus(cursor.getString(2));
+                data.setCountry(cursor.getString(3));
+                data.setLon(cursor.getString(4));
+                data.setCity(cursor.getString(5));
+                data.setCountryCode(cursor.getString(6));
+                data.setProvince(cursor.getString(7));
+                data.setLon(cursor.getString(8));
+                data.setCases(cursor.getInt(9));
+                dataList.add(data);
+            } while (cursor.moveToNext());
+        }
+        return dataList;
+    }
+
+    public void deleteData(Data data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_DATA, KEY_DATE + " = ?", new String[]{data.getDate()});
+        db.close();
+    }
+
+    public boolean exists(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = { KEY_DATE };
+        String selection = KEY_DATE + " =?";
+        String[] selectionArgs = { date };
+        String limit = "1";
+
+        Cursor cursor = db.query(TABLE_DATA, columns, selection, selectionArgs, null, null, null, limit);
+        boolean exists = (cursor.getCount() > 0);
+        Log.d("theS", "exists: "+date +" "+exists);
+        cursor.close();
+        return exists;
+    }
 
 }

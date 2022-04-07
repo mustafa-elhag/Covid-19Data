@@ -112,6 +112,7 @@ public class Data {
                         ",cases = '" + cases + '\'' +
                         ",date = '" + date + '\'' +
                         "}";
-    }
+        }
+
 
 }
