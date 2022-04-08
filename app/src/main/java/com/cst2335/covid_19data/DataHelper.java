@@ -44,6 +44,8 @@ public class DataHelper extends SQLiteOpenHelper {
                 + KEY_LAT + " TEXT," + KEY_CASES + " INTEGER" +
                 ")";
         sqLiteDatabase.execSQL(CREATE_TABLE);
+        Log.d("theS", "CREATE_TABLE: "+CREATE_TABLE);
+
     }
 
 

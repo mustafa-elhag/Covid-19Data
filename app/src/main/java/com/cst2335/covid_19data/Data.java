@@ -3,24 +3,44 @@ package com.cst2335.covid_19data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
 
 public class Data implements Parcelable {
+
+    @SerializedName("CityCode")
     private String cityCode;
+
+    @SerializedName("Status")
     private String status;
+
+    @SerializedName("Country")
     private String country;
+
+    @SerializedName("Lon")
     private String lon;
+
+    @SerializedName("City")
     private String city;
+
+    @SerializedName("CountryCode")
     private String countryCode;
+
+    @SerializedName("Province")
     private String province;
+
+    @SerializedName("Lat")
     private String lat;
+
+    @SerializedName("Cases")
     private int cases;
+
+    @SerializedName("Date")
     private String date;
 
     public Data() {
     }
 
-
-    protected Data(Parcel in) {
+    public Data(Parcel in) {
         cityCode = in.readString();
         status = in.readString();
         country = in.readString();
@@ -45,88 +65,88 @@ public class Data implements Parcelable {
         }
     };
 
-    public void setCityCode(String cityCode) {
+    public void setCityCode(String cityCode){
         this.cityCode = cityCode;
     }
 
-    public String getCityCode() {
+    public String getCityCode(){
         return cityCode;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String status){
         this.status = status;
     }
 
-    public String getStatus() {
+    public String getStatus(){
         return status;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(String country){
         this.country = country;
     }
 
-    public String getCountry() {
+    public String getCountry(){
         return country;
     }
 
-    public void setLon(String lon) {
+    public void setLon(String lon){
         this.lon = lon;
     }
 
-    public String getLon() {
+    public String getLon(){
         return lon;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city){
         this.city = city;
     }
 
-    public String getCity() {
+    public String getCity(){
         return city;
     }
 
-    public void setCountryCode(String countryCode) {
+    public void setCountryCode(String countryCode){
         this.countryCode = countryCode;
     }
 
-    public String getCountryCode() {
+    public String getCountryCode(){
         return countryCode;
     }
 
-    public void setProvince(String province) {
+    public void setProvince(String province){
         this.province = province;
     }
 
-    public String getProvince() {
+    public String getProvince(){
         return province;
     }
 
-    public void setLat(String lat) {
+    public void setLat(String lat){
         this.lat = lat;
     }
 
-    public String getLat() {
+    public String getLat(){
         return lat;
     }
 
-    public void setCases(int cases) {
+    public void setCases(int cases){
         this.cases = cases;
     }
 
-    public int getCases() {
+    public int getCases(){
         return cases;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date){
         this.date = date;
     }
 
-    public String getDate() {
+    public String getDate(){
         return date;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return
                 "Data{" +
                         "cityCode = '" + cityCode + '\'' +
@@ -140,7 +160,7 @@ public class Data implements Parcelable {
                         ",cases = '" + cases + '\'' +
                         ",date = '" + date + '\'' +
                         "}";
-        }
+    }
 
     @Override
     public int describeContents() {
