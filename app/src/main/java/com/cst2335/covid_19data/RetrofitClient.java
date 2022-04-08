@@ -1,17 +1,17 @@
 package com.cst2335.covid_19data;
-/*
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-*/
+
 public class RetrofitClient {
     private static RetrofitClient instance = null;
     private Api myApi;
 
     private RetrofitClient() {
-      /*  Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        myApi = retrofit.create(Api.class); */
+        myApi = retrofit.create(Api.class);
     }
 
     public static synchronized RetrofitClient getInstance() {
