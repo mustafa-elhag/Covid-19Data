@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Covid19Data">
         <activity
+            android:name=".RetrofitClient"
+            android:exported="false" />
+        <activity
+            android:name=".Api"
+            android:exported="false" />
+        <activity
+            android:name=".MySharedPreferences"
+            android:exported="false" />
+        <activity
             android:name=".DataAdapter"
             android:exported="false" />
         <activity
