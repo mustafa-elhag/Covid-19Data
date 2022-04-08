@@ -18,8 +18,23 @@ public class ResultFragment extends Fragment {
     DataAdapter dataAdapter;
 
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_result, container, false);
 
+     listView = view.findViewById(R.id.list_view);
+      List<Data> dataList = getArguments().getParcelableArrayList("dataList");
+       dataAdapter = new DataAdapter(getActivity(), dataList,false);
+       listView.setAdapter(dataAdapter);
+        return view;
     }
+
+}
+
+
+
+
 
 
 
