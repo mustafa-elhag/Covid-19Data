@@ -24,14 +24,14 @@ import java.util.List;
 public class DataAdapter extends BaseAdapter {
     Context context;
     List<Data> dataList;
-    DataHelper databaseHandler;
+    DataHelper dataHelper;
     boolean isDatabaseValue;
 
     public DataAdapter(Context context, List<Data> dataList, boolean isDatabaseValue) {
         this.context = context;
         this.dataList = dataList;
         this.isDatabaseValue = isDatabaseValue;
-        databaseHandler = new DataHelper(context);
+        dataHelper = new DataHelper(context);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class DataAdapter extends BaseAdapter {
         ImageView ivSave = view.findViewById(R.id.iv_save);
         ImageView ivDelete = view.findViewById(R.id.iv_delete);
 
-        if (databaseHandler.exists(dataList.get(i).getDate())) {
+        if (dataHelper.exists(dataList.get(i).getDate())) {
             ivSave.setVisibility(View.GONE);
             ivDelete.setVisibility(View.VISIBLE);
         } else {
@@ -72,7 +72,7 @@ public class DataAdapter extends BaseAdapter {
         ivSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (databaseHandler.saveData(dataList.get(i))) {
+                if (dataHelper.saveData(dataList.get(i))) {
                     ivSave.setVisibility(View.GONE);
                     ivDelete.setVisibility(View.VISIBLE);
                     notifyDataSetChanged();
@@ -84,7 +84,7 @@ public class DataAdapter extends BaseAdapter {
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHandler.deleteData(dataList.get(i));
+                dataHelper.deleteData(dataList.get(i));
                 if (isDatabaseValue) {
                     dataList.remove(dataList.get(i));
                 }
