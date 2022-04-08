@@ -1,7 +1,10 @@
 package com.cst2335.covid_19data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Data {
+
+public class Data implements Parcelable {
     private String cityCode;
     private String status;
     private String country;
@@ -16,6 +19,31 @@ public class Data {
     public Data() {
     }
 
+
+    protected Data(Parcel in) {
+        cityCode = in.readString();
+        status = in.readString();
+        country = in.readString();
+        lon = in.readString();
+        city = in.readString();
+        countryCode = in.readString();
+        province = in.readString();
+        lat = in.readString();
+        cases = in.readInt();
+        date = in.readString();
+    }
+
+    public static final Creator<Data> CREATOR = new Creator<Data>() {
+        @Override
+        public Data createFromParcel(Parcel in) {
+            return new Data(in);
+        }
+
+        @Override
+        public Data[] newArray(int size) {
+            return new Data[size];
+        }
+    };
 
     public void setCityCode(String cityCode) {
         this.cityCode = cityCode;
@@ -114,5 +142,22 @@ public class Data {
                         "}";
         }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(cityCode);
+        parcel.writeString(status);
+        parcel.writeString(country);
+        parcel.writeString(lon);
+        parcel.writeString(city);
+        parcel.writeString(countryCode);
+        parcel.writeString(province);
+        parcel.writeString(lat);
+        parcel.writeInt(cases);
+        parcel.writeString(date);
+    }
 }
